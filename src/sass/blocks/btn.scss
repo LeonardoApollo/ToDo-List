@@ -1,0 +1,40 @@
+.btn-action {
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    transition: linear .05s;
+    &:hover {
+        border: 1px solid rgb(172, 172, 172);
+        background-color: #ccc;
+    }
+    &:focus {
+        border: 1px solid rgb(172, 172, 172);
+        background-color: #ccc;
+    }
+    img {
+        pointer-events: none;
+        display: block;
+        margin: 0 auto;
+        max-width: 15px;
+        object-fit: cover;
+    }
+}
+
+.btn_active {
+    background-color: rgb(29, 41, 211);
+    color: #ffffff;
+    padding: 5px 2px;
+    max-width: 110px;
+    min-height: 45px;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    transition: linear .05s;
+    &:hover {
+        border-color: #000;
+    }
+    &:focus {
+        border-color: #000;
+    }
+}

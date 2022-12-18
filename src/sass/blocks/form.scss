@@ -1,0 +1,28 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    &__control {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-shadow: 1px 1px 1px rgb(173, 173, 173);
+        transition: linear .05s;
+        &:hover {
+            border: 1px solid rgb(172, 172, 172);
+            outline: none;
+            box-shadow: 0px 0px 10px rgb(0, 132, 255);
+        }
+        &:focus {
+            border: 1px solid rgb(172, 172, 172);
+            outline: none;
+            box-shadow: 0px 0px 10px rgb(0, 153, 255);
+        }
+    }
+    &__text {
+        display: block;
+        margin: 3px 0px 10px 0px;
+        color: rgb(148, 148, 148);
+    }
+}

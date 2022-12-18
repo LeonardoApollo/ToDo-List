@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru-Ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="blur">
+        <header class="header">
+        <div class="container">
+            <div class="title">
+                <h1>ToDo приложение</h1>
+            </div>
+            <div class="subtitle">
+                <h2>Список задач на сегодня</h2>
+            </div>
+        </div>
+    </header>
+
+    <section class="card">
+        <div class="container">
+            <div class="card__main">
+                <ul id="taskList" class="list-group list-group_flush">
+
+                    <li id="emptyList" class="list-group__item empty-list">
+                        <img src="icons/coffe.png" alt="Empty">
+                        <div class="empty-list__title">Список дел пуст</div>
+                    </li>
+
+                    <!-- <li class="list-group__item task-item">
+                        <span class="task-item__title">Купить молоко</span>
+                        <div class="task-item__buttons">
+                            <button type="button" data-action="done" class="btn-action">
+                                <img src="icons/accept.png" alt="Done">
+                            </button>
+                            <button type="button" data-action="delete" class="btn-action">
+                                <img src="icons/denied.png" alt="Done">
+                            </button>
+                        </div>
+                    </li> -->
+
+                </ul>
+            </div>
+
+            <div class="card__light">
+                <div class="card__light_header">Добавить новую задачу</div>
+                <div class="card__light_body">
+                    <form id="form"action="#" class="form">
+                        <div class="form__wrapper">
+                            <input type="text" class="form__control" id="taskInput" placeholder="Текст новой задачи">
+                            <small id="emailHelp" class="form__text text-muted">Что делаем, сколько времени тратим, какой результат получаем</small>
+                        </div>
+                        <button type="submit" class="btn-primary btn_active">Добавить</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+
+    <script src="js/index.js"></script>
+</body>
+</html>

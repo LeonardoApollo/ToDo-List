@@ -1,0 +1,13 @@
+.header {
+  padding: 20px 0px;
+}
+.header .title h1 {
+  font-size: 38px;
+  font-weight: 400;
+}
+.header .subtitle h2 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJsb2Nrcy9oZWFkZXIuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJOztBQUVJO0VBQ0k7RUFDQTs7QUFJSjtFQUNJO0VBQ0E7RUFDQSIsImZpbGUiOiJibG9ja3MvaGVhZGVyLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXIge1xyXG4gICAgcGFkZGluZzogMjBweCAwcHg7XHJcbiAgICAudGl0bGUge1xyXG4gICAgICAgIGgxIHtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAzOHB4O1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogNDAwO1xyXG4gICAgICAgIH1cclxuICAgIH1cclxuICAgIC5zdWJ0aXRsZSB7XHJcbiAgICAgICAgaDIge1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICAgICAgICAgIGxpbmUtaGVpZ2h0OiAyMHB4O1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufSJdfQ== */

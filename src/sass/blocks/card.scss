@@ -1,0 +1,57 @@
+.card {
+    margin-top: 20px;
+    &__main {
+        padding: 20px 0px 0px 0px;
+        ul {
+            margin-bottom: 0px;
+            padding-left: 0px;
+            list-style-type: none;
+        }
+        background-color: #ffffff;
+        .list-group {
+            &__item.empty-list {
+                padding-bottom: 25px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img {
+                    max-width: 60px;
+                }
+                .empty-list__title {
+                    color: #ccc;
+                    font-size: 24px;
+                    font-weight: 700;
+                }
+            }
+            &__item.task-item {
+                padding: 10px 20px;
+                border-top: 1px solid #ccc;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .task-item__title.done {
+                    text-decoration: line-through;
+                    color: #ccc;
+                }
+            }
+        }
+    }
+    &__main.first {
+        padding: 0px;
+    }
+    &__light {
+        margin-top: 20px;
+        background-color: #f7f7f7;
+        &_header {
+            background-color: rgb(233, 233, 233);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        &_body {
+            padding: 20px;
+        }
+    }
+}
