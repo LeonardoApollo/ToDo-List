@@ -8,42 +8,91 @@ const taskInput = document.querySelector('#taskInput');
 const taskList = document.querySelector('#taskList');
 const emptyList = document.querySelector('#emptyList');
 const cardMain = document.querySelector('.card__main');
+let tasks = [];
+
+if (localStorage.getItem('tasks')) {
+  tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks.forEach(task => renderTask(task));
+}
+
+checkEmptyList(); // Глобалный запрет пробела как первого символа
+
+taskInput.oninput = () => {
+  if (taskInput.value.charAt(0) === ' ') {
+    taskInput.value = '';
+  }
+};
+
 form.addEventListener('submit', addTask);
 taskList.addEventListener('click', deleteTask);
 taskList.addEventListener('click', doneTask);
 
 function addTask(event) {
-  event.preventDefault();
+  event.preventDefault(); // Проверка на добавление пустой строки
+
+  if (taskInput.value.trim() == "") return;
   const taskText = taskInput.value;
-  const taskHTML = "\n                <li class=\"list-group__item task-item\">\n                    <span class=\"task-item__title\">".concat(taskText, "</span>\n                    <div class=\"task-item__buttons\">\n                        <button type=\"button\" data-action=\"done\" class=\"btn-action\">\n                            <img src=\"icons/accept.png\" alt=\"Done\">\n                        </button>\n                        <button type=\"button\" data-action=\"delete\" class=\"btn-action\">\n                            <img src=\"icons/denied.png\" alt=\"Done\">\n                        </button>\n                    </div>\n                </li>");
-  taskList.insertAdjacentHTML('beforeend', taskHTML);
+  const newTask = {
+    id: Date.now(),
+    text: taskText,
+    done: false
+  };
+  tasks.push(newTask);
+  saveToLS();
+  renderTask(newTask);
   taskInput.value = '';
   taskInput.focus();
-
-  if (taskList.children.length > 1) {
-    emptyList.classList.add('none');
-    cardMain.classList.add('first');
-  }
+  checkEmptyList();
 }
 
 function deleteTask(event) {
   if (event.target.dataset.action !== 'delete') return;
   const parentNode = event.target.closest('li');
-  parentNode.remove();
+  const id = Number(parentNode.id);
+  const index = tasks.findIndex(task => task.id === id);
+  tasks.splice(index, 1);
+  saveToLS(); // Метод с фильтрацией массива
+  // tasks = tasks.filter((task) => task.id !== id);
 
-  if (taskList.children.length === 1) {
-    emptyList.classList.remove('none');
-    cardMain.classList.remove('first');
-  }
+  parentNode.remove();
+  checkEmptyList();
 }
 
 function doneTask(event) {
   if (event.target.dataset.action !== 'done') return;
   const parentNode = event.target.closest('li');
+  const id = Number(parentNode.id);
+  const task = tasks.find(task => task.id === id);
+  task.done = !task.done;
+  saveToLS();
   const taskTitle = parentNode.querySelector('.task-item__title');
   taskTitle.classList.toggle('done');
   const doneBtn = parentNode.querySelector('.btn-action');
   doneBtn.blur();
+}
+
+function checkEmptyList() {
+  if (tasks.length === 0) {
+    const emptyListHTML = "<li id=\"emptyList\" class=\"list-group__item empty-list\">\n                                    <img src=\"icons/coffe.png\" alt=\"Empty\">\n                                    <div class=\"empty-list__title\">\u0421\u043F\u0438\u0441\u043E\u043A \u0434\u0435\u043B \u043F\u0443\u0441\u0442</div>\n                                </li>";
+    taskList.insertAdjacentHTML('afterbegin', emptyListHTML);
+    cardMain.classList.remove('first');
+  }
+
+  if (tasks.length > 0) {
+    const emptyListEl = document.querySelector('#emptyList');
+    emptyListEl ? emptyListEl.remove() : null;
+    cardMain.classList.add('first');
+  }
+}
+
+function saveToLS() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function renderTask(task) {
+  const cssClass = task.done ? "task-item__title done" : "task-item__title";
+  const taskHTML = "\n                <li id=\"".concat(task.id, "\" class=\"list-group__item task-item\">\n                    <span class=\"").concat(cssClass, "\">").concat(task.text, "</span>\n                    <div class=\"task-item__buttons\">\n                        <button type=\"button\" data-action=\"done\" class=\"btn-action\">\n                            <img src=\"icons/accept.png\" alt=\"Done\">\n                        </button>\n                        <button type=\"button\" data-action=\"delete\" class=\"btn-action\">\n                            <img src=\"icons/denied.png\" alt=\"Done\">\n                        </button>\n                    </div>\n                </li>");
+  taskList.insertAdjacentHTML('beforeend', taskHTML);
 }
 /******/ })()
 ;
